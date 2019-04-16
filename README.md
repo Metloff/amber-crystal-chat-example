@@ -47,4 +47,4 @@ crystal spec
 
 ## Contributors
 
-- [your-github-user](https://github.com/your-github-user) Henry Metlov - creator, maintainer
+- [Henry Metlov](https://github.com/Metloff) - creator, maintainer

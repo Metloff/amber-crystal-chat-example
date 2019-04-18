@@ -3,19 +3,18 @@ class ChatRoomChannel < Amber::WebSockets::Channel
   end
 
   def handle_message(client_socket, message)
-    user = User.find message["payload"]["user_id"]
-    if user
-      un = user.first_letters
-    else
-      un = "NA"
-    end
+    return if !client_socket
+      
+    current_user = User.find client_socket.session[:user_id]
+    return if !current_user
 
     begin
-      msg = RoomMessage.new()
-      msg.username = un 
-      msg.message = message["payload"]["message"].to_s
-      msg.user_id = message["payload"]["user_id"].to_s.to_i64
-      msg.room_id = message["payload"]["room_id"].to_s.to_i64
+      msg = RoomMessage.new(
+        username: current_user.first_letters,
+        message: message["payload"]["message"].to_s,
+        user_id: current_user.id,
+        room_id: message["payload"]["room_id"].to_s.to_i64,
+      )
       msg.save!
       
       ChatSocket.broadcast("message", "chat_room:hello", "message_new", {

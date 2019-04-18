@@ -22,7 +22,6 @@ h1 = room.name
       .input-group.mb-3
         == text_field(name: "message", id: "message", class: "form-control", placeholder: "Your message here", autofocus: "", required: "")
         == hidden_field(name: "room_id", id: "room_id", value: "#{ room.id }")
-        == hidden_field(name: "user_id", id: "user_id", value: "#{ user_id }")
 
     / == form(action: "/room_messages", method: :post) do
     /   == csrf_tag

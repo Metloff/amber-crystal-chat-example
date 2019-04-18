@@ -9,8 +9,4 @@ struct ChatSocket < Amber::WebSockets::ClientSocket
     # puts session["user_id"]
     true
   end
-
-  def current_user
-    User.find session["user_id"]
-  end
 end

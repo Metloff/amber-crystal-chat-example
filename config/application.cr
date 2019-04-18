@@ -23,3 +23,5 @@ require "../src/channels/**"
 require "../src/controllers/application_controller"
 require "../src/controllers/**"
 require "./routes"
+require "../src/structs/**"
+

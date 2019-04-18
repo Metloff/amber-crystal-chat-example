@@ -7,7 +7,6 @@ let logout = document.getElementById('logout');
 let message = document.getElementById('message');
 let chat = document.getElementById('chat');
 let roomID = document.getElementById('room_id');
-let userID = document.getElementById('user_id');
 let messageForm = document.getElementById('message-form');
 
 function getUser() {
@@ -54,7 +53,6 @@ socket.connect().then(() => {
         channel.push('message_new', {
             message: message.value,
             room_id: roomID.value,
-            user_id: userID.value,
         });
         message.value = '';
     });
